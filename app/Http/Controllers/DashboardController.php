@@ -22,4 +22,19 @@ class DashboardController extends Controller
         return view('dashboard.home')->with($data);
 
     }
+
+    public function loginpage()
+    {
+
+        $contributions="";
+
+        $data=[
+            'contributions' => $contributions,
+            
+
+        ];
+
+        return view('logs.login')->with($data);
+
+    }
 }

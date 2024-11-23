@@ -16,7 +16,8 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-//Route::get('/', function () {    return view('welcome');});
+Route::get('/pagetest', function () {    return view('logs.login');});
+//Route::get('/login', [DashboardController::class, 'dashboard'])->name('dash.index');
 
 
 

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FileUploadController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {    return view('welcome');});
+
+
+
+Route::get('/', [FileUploadController::class, 'index']);
+Route::get('/upload', [FileUploadController::class, 'create']);
+Route::post('/upload', [FileUploadController::class, 'store']);

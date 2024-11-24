@@ -45,6 +45,8 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/upload-document', [DocumentController::class, 'store'])->name('document.upload');
 
     Route::get('/document/{id}', [DocumentController::class, 'show'])->name('document.show');
+
+    Route::get('/UploadedTableIndex', [DocumentController::class, 'viewsuploads'])->name('document.uploaded');
    
 });
 

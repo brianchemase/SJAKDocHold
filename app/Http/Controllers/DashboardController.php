@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
     }
 
-    public function loginpage()
+    public function blank()
     {
 
         $contributions="";
@@ -34,7 +34,53 @@ class DashboardController extends Controller
 
         ];
 
-        return view('logs.login')->with($data);
+        return view('dashboard.blank')->with($data);
+
+    }
+
+    public function table()
+    {
+
+        $contributions="";
+
+        $data=[
+            'contributions' => $contributions,
+            
+
+        ];
+
+        return view('dashboard.table')->with($data);
+
+    }
+
+
+    public function form()
+    {
+
+        $contributions="";
+
+        $data=[
+            'contributions' => $contributions,
+            
+
+        ];
+
+        return view('dashboard.form')->with($data);
+
+    }
+
+    public function uploaddoc()
+    {
+
+        $contributions="";
+
+        $data=[
+            'contributions' => $contributions,
+            
+
+        ];
+
+        return view('dashboard.uploaddocform')->with($data);
 
     }
 }

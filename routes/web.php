@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,16 @@ Route::prefix('service')->group(function () {
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dash.index');
+    Route::get('/blank', [DashboardController::class, 'blank'])->name('blank');
+    Route::get('/table', [DashboardController::class, 'table'])->name('table');
+    Route::get('/form', [DashboardController::class, 'form'])->name('form');
+
+
+
+    Route::get('/UploadDocForm', [DashboardController::class, 'uploaddoc'])->name('uploaddoc');
+    Route::post('/upload-document', [DocumentController::class, 'store'])->name('document.upload');
+
+    Route::get('/document/{id}', [DocumentController::class, 'show'])->name('document.show');
    
 });
 

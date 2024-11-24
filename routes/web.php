@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use App\Http\Controllers\DocumentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+#https://cambotutorial.com/article/laravel-9-login-multiple-roles-using-custom-middleware
 
 Route::get('/pagetest', function () {    return view('logs.login');});
 //Route::get('/login', [DashboardController::class, 'dashboard'])->name('dash.index');
@@ -52,5 +55,10 @@ Route::prefix('dashboard')->group(function () {
 
 
 Auth::routes();
+// Route User
+Route::middleware(['auth','user-role:admin'])->group(function()
+{ 
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+} );
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

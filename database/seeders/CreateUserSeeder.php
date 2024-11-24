@@ -24,7 +24,7 @@ class CreateUserSeeder extends Seeder
                'password'=> bcrypt('123456'),
             ],
             [
-               'name'=>'Approver',
+               'name'=>'approver',
                'email'=>'approver@yopmail.com',
                'phone'=>'07022230627',
                'role'=> 1,

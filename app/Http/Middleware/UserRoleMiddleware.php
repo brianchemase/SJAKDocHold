@@ -14,8 +14,20 @@ class UserRoleMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
-    {
-        return $next($request);
-    }
+    // public function handle(Request $request, Closure $next)
+    // {
+    //     return $next($request);
+    // }
+
+      // Add custom parameter $role which pass from Route.php
+      public function handle(Request $request, Closure $next, $role)
+      {
+          // Check & verify with route, you will more understand
+          if(Auth::check() && Auth::user()->role == $role)
+          {
+              return $next($request);
+          }
+          
+          return response()->json(['You do not have permission to access for this page.']);
+      }
 }

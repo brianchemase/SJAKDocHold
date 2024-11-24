@@ -31,7 +31,7 @@
 			      		</div>
 								
 			      	</div>
-					<form action="{{ route('login') }}" class="signin-form">
+					<form method="POST" action="{{ route('login') }}" class="signin-form">
 						@if(Session::has('success'))
 							<div class="alert alert-success">{{Session::get('success')}}</div>
 						@endif

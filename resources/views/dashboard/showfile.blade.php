@@ -120,7 +120,7 @@
 								<!-- Right Section - Display PDF -->
 								<div class="col-md-8">
 									<h3>Uploaded PDF</h3>
-									<embed src="{{ asset('storage/uploads/' . $document->document_file) }}" type="application/pdf" width="100%" height="800px" />
+									<embed src="{{ asset('storage/' . $document->document_file) }}" type="application/pdf" width="100%" height="800px" />
 								</div>
 							</div>
 						</div>					       

@@ -44,7 +44,7 @@
 													<td>{{ $submission->upload_time }}</td>
 													<td>{{ $submission->department }}</td>
 													<td>
-														<a href="{{ asset('storage/uploads/' . $submission->document_file) }}" target="_blank">View File</a>
+														<a href="{{ asset('storage/' . $submission->document_file) }}" target="_blank">View File</a>
 													</td>
 													<td>
 														<!-- Add the View Details button with an icon -->

@@ -15,9 +15,10 @@ class CreateSubmittionsTable extends Migration
     {
         Schema::create('submittions', function (Blueprint $table) {
             $table->id();
-            $table->string('title');  // Title of the document
+            $table->string('title');  // Title of the document           
             $table->decimal('amount', 10, 2);  // Amount field, assuming 2 decimal places
             $table->string('ref')->unique();  // Reference number (should be unique)
+            $table->string('status');  // Title of the document
             $table->text('description');  // Description of the document
             $table->timestamp('upload_time')->nullable();  // Upload time
             $table->string('uploaded_by');  // User who uploaded the document

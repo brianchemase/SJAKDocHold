@@ -38,7 +38,7 @@ class DocumentController extends Controller
             $filePath = $request->file('document_file')->store('uploads', 'public');
 
             // Generate cert_serial
-           // $RefNo = 'SJAK' . date('Ymd') . mt_rand(1, 500);
+            //$refno = 'SJAK' . date('Ymd') . mt_rand(1, 500);
             $refno = 'SJAK' . date('Ymd') . str_pad(mt_rand(1, 500), 3, '0', STR_PAD_LEFT);
 
             // Insert the form data into the database using DB Facade
@@ -49,6 +49,7 @@ class DocumentController extends Controller
                 'description' => $request->description,
                 'upload_time' => now(), // Use current timestamp
                 'uploaded_by' => "Admin",
+                'status' => "pending",
                 //'uploaded_by' => Auth::user()->name,
                 'document_file' => $filePath, // Store the file name
                 'department' => $request->department,

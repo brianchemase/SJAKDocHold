@@ -45,10 +45,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function role(): Attribute
+    // protected function role(): Attribute
+    // {
+    //     return new Attribute(
+    //         get: fn ($value) =>  ["initiator", "approver", "admin"][$value],
+    //     );
+    // }
+
+    public function getRoleAttribute($value)
     {
-        return new Attribute(
-            get: fn ($value) =>  ["initiator", "approver", "admin"][$value],
-        );
+        return ["initiator", "approver", "admin"][$value];
     }
 }

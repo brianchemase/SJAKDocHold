@@ -76,30 +76,26 @@ class DocumentController extends Controller
         // Fetch the document from the 'documents' table using DB facade
        $document = DB::table('submittions')->where('id', $id)->first();
 
-       //return $document;
+       // Extract the 'ref' value from the document
+       $ref = $document->ref;
 
-        // if (!$document) {
-        //     // If no document is found, return an error message or redirect
-        //     return redirect()->route('documents.index')->with('error', 'Document not found');
-        // }
+            $actions = DB::table('actions')
+            ->join('users', 'actions.userid', '=', 'users.id') // Assuming the "users" table contains user information
+            ->select('actions.*', 'users.name as user_name') // Select relevant columns
+            ->orderBy('actions.actiontime', 'desc') // Order by upload_time
+            ->get();  // Get the result
 
-         // Simulate document data
-            // $document = (object) [
-            //     'title' => 'Sample Document Title',
-            //     'amount' => '2000',
-            //     'uploader' => 'EMS Manager',
-            //     'department' => 'EMS',
-            //     'ref' => 'SJAKEMS20241124001',
-            //     'status' => 'approved',
-            //     'uploaddatetime' => '25/12/2024 10:50AM',
-
-            //     'description' => 'This is a simulated description of the document. It provides some context about the content of the document.',
-            //     'file_path' => 'uploads/zMqcycFdT79s5YlUtSx0i2p0YDdOQSd3trE87wyK.pdf', // Simulated file path to the PDF
-            // ];
+            $actions = DB::table('actions')
+            ->join('users', 'actions.userid', '=', 'users.id') // Assuming the "users" table contains user information
+            ->select('actions.*', 'users.name as user_name') // Select relevant columns
+            ->where('actions.ref', '=', $ref) // Filter actions by the 'ref' value
+            ->orderBy('actions.actiontime', 'desc') // Order by action time
+            ->get(); // Get the result
 
         // Prepare the data to be passed to the view
         $data = [
             'document' => $document,
+            'actions' => $actions,
         ];
 
         // Return the view and pass the data

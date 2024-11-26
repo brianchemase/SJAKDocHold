@@ -23,6 +23,8 @@ use App\Http\Controllers\AuthController;
 Route::get('/pagetest', function () {    return view('logs.login');});
 //Route::get('/login', [DashboardController::class, 'dashboard'])->name('dash.index');
 
+Route::post('/approverequest', [FileUploadController::class, 'approve'])->name('approve');
+Route::post('/returnrequest', [FileUploadController::class, 'return'])->name('return');
 
 
 Route::get('/', [FileUploadController::class, 'index']);

@@ -44,4 +44,57 @@ class FileUploadController extends Controller
 
         return redirect('/')->with('success', 'File uploaded successfully!');
     }
+
+    public function approve(Request $request)
+    {
+        // Validate the request
+        $validated = $request->validate([
+            'action' => 'required|string',
+            'userid' => 'required|integer',
+            'ref' => 'required|string',
+            'comment' => 'nullable|string',
+            'actiontime' => 'required|date',
+        ]);
+
+        // Use DB facade to insert the data into the database
+        DB::table('actions')->insert([
+            'action' => $validated['action'],
+            'ref' => $validated['ref'],
+            'userid' => $validated['userid'],
+            'comment' => $validated['comment'],
+            'actiontime' => $validated['actiontime'],
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('status', 'Approval submitted successfully!');
+    }
+
+    // Handle Return action
+    public function return(Request $request)
+    {
+        // Validate the request
+        $validated = $request->validate([
+            'action' => 'required|string',
+            'userid' => 'required|integer',
+            'ref' => 'required|string',
+            'comment' => 'nullable|string',
+            'actiontime' => 'required|date',
+        ]);
+
+        // Use DB facade to insert the data into the database
+        DB::table('actions')->insert([
+            'action' => $validated['action'],
+            'ref' => $validated['ref'],
+            'userid' => $validated['userid'],
+            'comment' => $validated['comment'],
+            'actiontime' => $validated['actiontime'],
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('status', 'Return submitted successfully!');
+    }
 }

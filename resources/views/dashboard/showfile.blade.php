@@ -8,6 +8,11 @@
                 <div class="app-card app-card-notification shadow-sm mb-8">
 				    						
 						<div class="container-fluid">
+							@if(session('status'))
+								<div class="alert alert-success">
+									{{ session('status') }}
+								</div>
+							@endif
 							<div class="row">								
 
 								<div class="col-md-4">
@@ -62,65 +67,50 @@
 										<td><b>{{ $document->uploaded_by }} on {{ \Carbon\Carbon::parse($document->upload_time)->format('j F, Y, g:i A') }}</b></td>
 									</tr>
 									</table>
+
+									<h2>Action Trail</h2>
+
+									@if(session('status'))
+										<div class="alert alert-success">
+											{{ session('status') }}
+										</div>
+									@endif
+
+								<div class="list-group">
+									@foreach($actions as $action)
+									<div class="list-group-item">
+										<h5 class="mb-1">{{ ucfirst($action->action) }}</h5> <!-- Display the action (Approve/Return) -->
+										<p class="mb-1"><strong>User:</strong> {{ $action->user_name }}</p> <!-- Display user name -->
+										<p class="mb-1"><strong>Comment:</strong> {{ $action->comment ?? 'No comment' }}</p>
+										<small><strong>Date and Time:</strong> {{ \Carbon\Carbon::parse($action->actiontime)->format('Y-m-d H:i:s') }}</small>
+									</div>
+									<hr>
+									@endforeach
 								</div>
-								<!-- <div class="col-md-6">
-									<h3>Document Details</h3>
-									<form>
-										<div class="form-group">
-											<label for="title">Title</label>
-											<input type="text" class="form-control" id="title" value="{{ $document->title }}" disabled>
-										</div>
+								
+								@if(Auth::user()->role == 'approver' || Auth::user()->role == 'admin')						
+									<div class="container">
+										<!-- Button to open modal -->
+											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#approveModal">
+												Approve
+											</button>
+											<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#returnModal">
+												Return
+											</button>
+											@include('dashboard.modals.action')
+										<br>
+										<br>
+									</div>
+								@endif
 
-										<div class="form-group">
-											<label for="title">Amount</label>
-											<input type="text" class="form-control" id="amount" value="{{ $document->amount }}" disabled>
-										</div>
 
-
-										<div class="form-group">
-											<label for="title">Department</label>
-											<input type="text" class="form-control" id="department" value="{{ $document->department }}" disabled>
-										</div>
-
-										<div class="form-group">
-											<label for="title">Reference Number</label>
-											<input type="text" class="form-control" id="reference" value="{{ $document->ref }}" disabled>
-										</div>
-
-										
-
-										<div class="form-group">
-											<label for="status">Status</label>
-											<span class="badge 
-												@if($document->status == 'approved') 
-													badge-success 
-												@elseif($document->status == 'rejected') 
-													badge-danger 
-												@elseif($document->status == 'pending') 
-													badge-warning 
-												@else 
-													badge-secondary 
-												@endif">
-												{{ $document->status }}
-											</span>
-										</div>
-																				
-										<div class="form-group">
-											<label for="description">Description</label>
-											<textarea class="form-control" id="description" rows="9" disabled>{{ $document->description }}</textarea>
-										</div>
-
-										<div class="form-group">
-											<label for="title"><b> Uploaded by {{ $document->uploaded_by }} on {{ $document->upload_time }}</b> </label>
-											
-										</div>
-									</form>
-								</div> -->
+								</div>
+								
 
 								<!-- Right Section - Display PDF -->
 								<div class="col-md-8">
 									<h3>Uploaded PDF</h3>
-									<embed src="{{ asset('storage/' . $document->document_file) }}" type="application/pdf" width="100%" height="800px" />
+									<embed src="{{ asset('storage/' . $document->document_file) }}" type="application/pdf" width="100%" height="1200px" />
 								</div>
 							</div>
 						</div>					       

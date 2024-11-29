@@ -6,6 +6,7 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UsersManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,18 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/document/{id}', [DocumentController::class, 'show'])->name('document.show');
 
     Route::get('/UploadedTableIndex', [DocumentController::class, 'viewsuploads'])->name('document.uploaded');
+
+
+    //users management 
+    Route::get('/UsersManagement', [UsersManagementController::class, 'index'])->name('users.index');
+    Route::post('/Registerusers', [UsersManagementController::class, 'store'])->name('users.store');
+
+    Route::delete('/users/{id}', [UsersManagementController::class, 'destroy'])->name('users.destroy');
+    Route::put('/users/{id}/reset-password', [UsersManagementController::class, 'resetPassword'])->name('users.reset-password');
+    Route::put('/users/update', [UsersManagementController::class, 'update'])->name('users.update');
+
+
+
    
 });
 

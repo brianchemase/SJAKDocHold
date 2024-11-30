@@ -62,7 +62,7 @@
 										<!-- Person uploading (can be the authenticated user's name) -->
 										<div class="form-group col-md-6">
 											<label for="uploadedBy">Person Uploading</label>
-											<input type="text" class="form-control" id="uploadedBy" name="uploaded_by" value="Admin" readonly>
+											<input type="text" class="form-control" id="uploadedBy" name="uploaded_by" value="{{ Auth::user()->name }}" readonly>
 										</div>
 									</div>
 

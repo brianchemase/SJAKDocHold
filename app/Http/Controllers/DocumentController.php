@@ -48,7 +48,7 @@ class DocumentController extends Controller
                 'ref' => $refno,
                 'description' => $request->description,
                 'upload_time' => now(), // Use current timestamp
-                'uploaded_by' => "Admin",
+                'uploaded_by' => $request->uploaded_by,
                 'status' => "pending",
                 //'uploaded_by' => Auth::user()->name,
                 'document_file' => $filePath, // Store the file name

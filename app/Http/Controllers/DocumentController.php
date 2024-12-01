@@ -137,4 +137,24 @@ class DocumentController extends Controller
     }
 
 
+    public function viewpendinguploads ()
+    {
+        // Get the authenticated user's ID
+        $userId = auth()->id();
+
+        // Get submissions where 'uploaderid' matches the authenticated user's ID
+        $submissions = DB::table('submittions')
+            ->where('status', "pending")
+            ->get();
+
+       // $submissions = DB::table('submittions')->get(); // Get all submissions by the user
+
+        $data = [
+            'submissions' => $submissions,
+        ];
+        // Return the view and pass the data
+        return view('dashboard.pendinguploadstable')->with($data);
+    }
+
+
 }

@@ -25,8 +25,22 @@
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="">Account</a></li>
 								<li><a class="dropdown-item" href="">Settings</a></li>
+								<li><a class="dropdown-item" href="">User Management</a></li>
+								@if (Auth::user()->role == "admin")
+									<li><a class="dropdown-item" href="{{ route('ManageUsers') }}">Manage Users</a></li>
+								@endif
 								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="">Log Out</a></li>
+								
+								<li><a class="dropdown-item" href="{{ route('logout') }}"
+										onclick="event.preventDefault();
+														document.getElementById('logout-form').submit();">
+										{{ __('Log Out') }}
+									</a>
+
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+										@csrf
+									</form>
+								</li>
 							</ul>
 			            </div><!--//app-user-dropdown--> 
                         

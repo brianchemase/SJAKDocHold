@@ -65,12 +65,14 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->phone }}</td>
                                                 <td>
-                                                    @if ($user->role === 0)
-                                                        User
-                                                    @elseif ($user->role === 1)
-                                                        Editor
+                                                    @if ($user->role === "initiator")
+                                                        Initiator
+                                                    @elseif ($user->role === "approver")
+                                                        Approver                                                    
+                                                    @elseif ($user->role === "admin")
+                                                       System Admin
                                                     @else
-                                                        Admin
+                                                        Unassigned
                                                     @endif
                                                 </td>
                                                 <td>
@@ -107,65 +109,7 @@
         </div>
 
 
-<div class="container">
 
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-    <h2 class="mb-4">Registered Users</h2>
-    
-    <!-- Table to display registered users -->
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($users as $user)
-                <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->phone }}</td>
-                    <td>
-                        @if ($user->role === 0)
-                            User
-                        @elseif ($user->role === 1)
-                            Editor
-                        @else
-                            Admin
-                        @endif
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" onclick="editUser({{ $user }})">Edit</button>
-                        <button class="btn btn-warning btn-sm" onclick="resetPassword({{ $user->id }})">Reset Password</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteUser({{ $user->id }})">Delete</button>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    
-    
-</div>
 
 <script>
     function editUser(user) {

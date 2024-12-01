@@ -39,7 +39,10 @@ Route::prefix('service')->group(function () {
     Route::post('/upload', [FileUploadController::class, 'store'])->name('service.store');
 });
 
-Route::prefix('dashboard')->group(function () {
+//Route::middleware(['auth', 'user-role:admin,approver,user'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dash.index');
     Route::get('/blank', [DashboardController::class, 'blank'])->name('blank');
     Route::get('/table', [DashboardController::class, 'table'])->name('table');
@@ -56,7 +59,7 @@ Route::prefix('dashboard')->group(function () {
 
 
     //users management 
-    Route::get('/UsersManagement', [UsersManagementController::class, 'index'])->name('users.index');
+    Route::get('/UsersManagement', [UsersManagementController::class, 'index'])->name('ManageUsers');
     Route::post('/Registerusers', [UsersManagementController::class, 'store'])->name('users.store');
 
     Route::delete('/users/{id}', [UsersManagementController::class, 'destroy'])->name('users.destroy');
@@ -66,6 +69,7 @@ Route::prefix('dashboard')->group(function () {
 
 
    
+});
 });
 
 

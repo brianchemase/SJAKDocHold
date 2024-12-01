@@ -67,6 +67,22 @@ class FileUploadController extends Controller
             'updated_at' => now(),
         ]);
 
+        $ref=$validated['ref'];
+
+        // Count the number of approvals for the given ref number in the actions table
+        $approvalCount = DB::table('actions')
+        ->where('ref', $ref)
+        ->where('action', 'Approve') // Assuming the status column indicates approval
+        ->count();
+
+        // If there are 3 approvals for the same ref number
+        if ($approvalCount >= 3) {
+            // Update the status in the submittions table to 'approved'
+            DB::table('submittions')
+                ->where('ref', $ref)
+                ->update(['status' => 'approved']);
+            }
+
         // Redirect back with a success message
         return redirect()->back()->with('status', 'Approval submitted successfully!');
     }

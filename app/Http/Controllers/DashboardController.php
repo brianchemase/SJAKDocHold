@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; // Import DB Facade
 
 class DashboardController extends Controller
 {
@@ -12,9 +13,17 @@ class DashboardController extends Controller
     {
 
         $contributions="";
+        $approvedCount = DB::table('submittions')->where('status', 'approved')->count();
+        $pendingCount = DB::table('submittions')->where('status', 'pending')->count();
+        $onReviewCount = DB::table('submittions')->where('status', 'on review')->count();
+        $totalUploads = DB::table('submittions')->count();
 
         $data=[
             'contributions' => $contributions,
+            'approvedCount' => $approvedCount,
+            'pendingCount' => $pendingCount,
+            'onReviewCount' => $onReviewCount,
+            'totalUploads' => $totalUploads,
             
 
         ];

@@ -88,7 +88,8 @@
 									@endforeach
 								</div>
 								
-								@if(Auth::user()->role == 'approver' || Auth::user()->role == 'admin')						
+								
+								@if((Auth::user()->role == 'approver' || Auth::user()->role == 'admin') && $document->status != 'approved')						
 									<div class="container">
 										<!-- Button to open modal -->
 											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#approveModal">

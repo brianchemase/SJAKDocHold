@@ -11,7 +11,7 @@ window.chartColors = {
 };
 
 /* Random number generator for demo purpose */
-var randomDataPoint = function(){ return Math.round(Math.random()*100)};
+var randomDataPoint = function(){ return Math.round(Math.random()*10000)};
 
 
 //Area line Chart Demo
@@ -20,13 +20,17 @@ var lineChartConfig = {
 	type: 'line',
 
 	data: {
-		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug','Sep','Oct','Nov','Dec'],
 		
 		datasets: [{
-			label: 'Dataset',
+			label: 'Approved KSH',
 			backgroundColor: "rgba(117,193,129,0.2)", 
 			borderColor: "rgba(117,193,129, 0.8)", 
 			data: [
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
@@ -61,7 +65,7 @@ var lineChartConfig = {
 			titleFontColor: window.chartColors.text,
             callbacks: {
                 label: function(tooltipItem, data) {	                 
-	                return tooltipItem.value + '%';   
+	                return tooltipItem.value;   
                 }
             },
             
@@ -95,7 +99,7 @@ var lineChartConfig = {
 				ticks: {
 		            beginAtZero: true,
 		            userCallback: function(value, index, values) {
-		                return value.toLocaleString() + '%';  
+		                return value.toLocaleString();  
 		            }
 		        },
 			}]
@@ -111,7 +115,7 @@ var barChartConfig = {
 	type: 'bar',
 
 	data: {
-		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug','Sep','Oct','Nov','Dec'],
 		datasets: [{
 			label: 'Dataset 1',
 			backgroundColor: "rgba(117,193,129,0.8)", 
@@ -119,6 +123,11 @@ var barChartConfig = {
 			
 			
 			data: [
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
@@ -135,6 +144,11 @@ var barChartConfig = {
 			
 			
 			data: [
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
+				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
@@ -224,9 +238,9 @@ var pieChartConfig = {
 			label: 'Dataset 1'
 		}],
 		labels: [
-			'Green',
-			'Blue',
-			'Gray',
+			'Approved',
+			'Pending',
+			'Onreview',
 		]
 	},
 	options: {
@@ -293,9 +307,9 @@ var doughnutChartConfig = {
 			label: 'Dataset 1'
 		}],
 		labels: [
-			'Green',
-			'Blue',
-			'Gray',
+			'Approved',
+			'Pending',
+			'Onreview',
 		]
 	},
 	options: {

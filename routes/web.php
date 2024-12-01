@@ -57,6 +57,8 @@ Route::prefix('service')->group(function () {
 
     Route::get('/UploadedTableIndex', [DocumentController::class, 'viewsuploads'])->name('document.uploaded');
 
+    Route::get('/MyUploadedTableIndex', [DocumentController::class, 'viewmyuploads'])->name('document.myuploaded');
+
 
     //users management 
     Route::get('/UsersManagement', [UsersManagementController::class, 'index'])->name('ManageUsers');

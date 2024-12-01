@@ -45,6 +45,7 @@
     <!-- Charts JS -->
     <script src="{{asset('dash/assets/plugins/chart.js/chart.min.js')}}"></script> 
     <script src="{{asset('dash/assets/js/index-charts.js')}}"></script> 
+    <script src="{{asset('dash/assets/js/charts-demo.js')}}"></script> 
 
 	<script src='https://code.jquery.com/jquery-3.3.1.js'></script>
 	<script src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'></script>
@@ -57,6 +58,8 @@
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
 
 </body>
 </html> 

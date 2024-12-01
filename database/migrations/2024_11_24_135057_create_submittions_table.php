@@ -22,6 +22,7 @@ class CreateSubmittionsTable extends Migration
             $table->text('description');  // Description of the document
             $table->timestamp('upload_time')->nullable();  // Upload time
             $table->string('uploaded_by');  // User who uploaded the document
+            $table->string('uploaderid');  // User who uploaded the document id
             $table->string('document_file');  // File name of the uploaded document
             $table->string('department');  // Department field
             $table->timestamps();

@@ -20,13 +20,14 @@ var lineChartConfig = {
 	type: 'line',
 
 	data: {
-		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
 		
 		datasets: [{
 			label: 'Dataset',
 			backgroundColor: "rgba(117,193,129,0.2)", 
 			borderColor: "rgba(117,193,129, 0.8)", 
 			data: [
+				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),
 				randomDataPoint(),

@@ -24,7 +24,7 @@
 
                         <div class="row g-3 mb-4 align-items-center justify-content-between">
                             <div class="col-auto">
-                                <h1 class="app-page-title mb-0">File Upload</h1>
+                                <h1 class="app-page-title mb-0">Document File Upload</h1>
                             </div>                            
                         </div>
 						
@@ -49,7 +49,7 @@
 									<div class="form-group">
 										<!-- Description -->
 										<label for="description">Description</label>
-										<textarea class="form-control" id="description" name="description" rows="3" placeholder="Describe the document" required></textarea>
+										<textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe the document" required></textarea>
 									</div>
 
 									<div class="form-row">
@@ -63,6 +63,7 @@
 										<div class="form-group col-md-6">
 											<label for="uploadedBy">Person Uploading</label>
 											<input type="text" class="form-control" id="uploadedBy" name="uploaded_by" value="{{ Auth::user()->name }}" readonly>
+											<input type="hidden" class="form-control" id="uploadedBy" name="userid" value="{{ Auth::user()->id }}">
 										</div>
 									</div>
 

@@ -37,7 +37,8 @@ class UsersManagementController extends Controller
         ]);
 
         // Redirect back to the users page with a success message
-        return redirect()->route('users.index')->with('success', 'User registered successfully.');
+        //return redirect()->route('users.index')->with('success', 'User registered successfully.');
+        return redirect()->back()->with('success', 'User registered successfully!');
     }
 
     public function destroy($id)
@@ -45,7 +46,8 @@ class UsersManagementController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        //return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        return redirect()->back()->with('success', 'User deleted successfully!');
     }
 
     public function resetPassword($id)
@@ -54,7 +56,9 @@ class UsersManagementController extends Controller
         $user->password = Hash::make('Ambulance123'); // Set a default password
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'Password reset successfully. Default password is "defaultpassword".');
+        //return redirect()->route('users.index')->with('success', 'Password reset successfully. Default password is "defaultpassword".');
+        return redirect()->back()->with('success', 'Password reset successfully. Default password is "Ambulance123".');
+        
     }
 
 

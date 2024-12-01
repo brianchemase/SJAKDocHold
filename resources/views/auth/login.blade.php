@@ -31,7 +31,14 @@
 			      		</div>
 								
 			      	</div>
-					<form method="POST" action="{{ route('login') }}" class="signin-form">
+					<form method="POST" action="{{ route('login') }}" class="signin-form">						
+
+						@if(Session::get('error'))
+						<div class="alert alert-danger">
+							{{ Session::get('error') }}
+						</div>
+						@endif
+
 						@if(Session::has('success'))
 							<div class="alert alert-success">{{Session::get('success')}}</div>
 						@endif
@@ -45,6 +52,7 @@
 								</ul>
 							</div>
 						@endif
+						
 						@csrf
 			      		<div class="form-group mt-3">
 			      			<input type="text" class="form-control" name="email" value="{{ old('email') }}" required>

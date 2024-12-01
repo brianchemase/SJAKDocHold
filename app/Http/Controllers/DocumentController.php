@@ -49,6 +49,7 @@ class DocumentController extends Controller
                 'description' => $request->description,
                 'upload_time' => now(), // Use current timestamp
                 'uploaded_by' => $request->uploaded_by,
+                'uploaderid' => $request->userid,
                 'status' => "pending",
                 //'uploaded_by' => Auth::user()->name,
                 'document_file' => $filePath, // Store the file name
@@ -114,6 +115,25 @@ class DocumentController extends Controller
         // Return the view and pass the data
         return view('dashboard.uploadstable')->with($data);
 
+    }
+
+    public function viewmyuploads ()
+    {
+        // Get the authenticated user's ID
+        $userId = auth()->id();
+
+        // Get submissions where 'uploaderid' matches the authenticated user's ID
+        $submissions = DB::table('submittions')
+            ->where('uploaderid', $userId)
+            ->get();
+
+       // $submissions = DB::table('submittions')->get(); // Get all submissions by the user
+
+        $data = [
+            'submissions' => $submissions,
+        ];
+        // Return the view and pass the data
+        return view('dashboard.myuploadstable')->with($data);
     }
 
 

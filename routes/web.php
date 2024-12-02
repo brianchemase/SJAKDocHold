@@ -18,7 +18,7 @@ use App\Http\Controllers\UsersManagementController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [DashboardController::class, 'dashboard'])->name('dash.index');
+//Route::get('/', [DashboardController::class, 'dashboard'])->name('dash.index');
 #https://cambotutorial.com/article/laravel-9-login-multiple-roles-using-custom-middleware
 
 //Route::get('/pagetest', function () {    return view('logs.login');});
@@ -28,7 +28,7 @@ Route::post('/approverequest', [FileUploadController::class, 'approve'])->name('
 Route::post('/returnrequest', [FileUploadController::class, 'return'])->name('return');
 
 
-Route::get('/systemuploads', [FileUploadController::class, 'index']);
+Route::get('/', [FileUploadController::class, 'index']);
 Route::get('/upload', [FileUploadController::class, 'create']);
 Route::post('/upload', [FileUploadController::class, 'store']);
 

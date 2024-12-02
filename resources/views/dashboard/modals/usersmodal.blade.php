@@ -27,8 +27,8 @@
                                     <div class="mb-3">
                                         <label for="role" class="form-label">Role</label>
                                         <select class="form-select" id="role" name="role">
-                                            <option value="0" selected>User</option>
-                                            <option value="1">Editor</option>
+                                            <option value="0" selected>Initiator</option>
+                                            <option value="1">Approver</option>
                                             <option value="2">Admin</option>
                                         </select>
                                     </div>
@@ -70,9 +70,9 @@
                     <div class="mb-3">
                         <label for="edit_role" class="form-label">Role</label>
                         <select class="form-select" id="edit_role" name="role">
-                            <option value="0">User</option>
-                            <option value="1">Editor</option>
-                            <option value="2">Admin</option>
+                            <option value="0">Initiator</option>
+                            <option value="1">Approver</option>
+                            <option value="2">System Admin</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Save Changes</button>

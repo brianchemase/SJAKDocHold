@@ -77,6 +77,13 @@ class DocumentController extends Controller
         // Fetch the document from the 'documents' table using DB facade
        $document = DB::table('submittions')->where('id', $id)->first();
 
+
+       // Check if document exists
+        if (!$document) {
+            // If no document found, redirect back with an error message
+            return back()->with('error', 'Document not found');
+        }
+
        // Extract the 'ref' value from the document
        $ref = $document->ref;
 
